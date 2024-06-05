@@ -1,7 +1,7 @@
 [project]
 name = "fakestore-backend-drf"
 version = "1.0.0"
-description = "Default template for PDM package"
+description = "A Fakestore REST API built with Django and Django REST Framework."
 authors = [
     {name = "Eduardo da Silva", email = "eduardo.silva@gmail.com"},
 ]
@@ -28,8 +28,42 @@ license = {text = "MIT"}
 distribution = false
 
 [tool.pdm.dev-dependencies]
+format = ["isort>=5.13.2", "black>=24.4.2"]
 dev = [
     "black>=24.4.2",
     "isort>=5.13.2",
     "pylint>=3.2.2",
 ]
+
+[tool.pdm.scripts]
+dev = "python manage.py runserver"
+createsuperuser = "python manage.py createsuperuser"
+pre_migrate = "python manage.py makemigrations"
+migrate = "python manage.py migrate"
+dbshell = "python manage.py dbshell"
+shell = "python manage.py shell"
+shellp= "python manage.py shell_plus"
+test = "python manage.py test"
+loaddata = "python manage.py loaddata core.json"
+dumpdata = "python manage.py dumpdata --indent 2"
+
+[[tool.pdm.autoexport]]
+filename = "requirements.txt"
+without-hashes = "true"
+
+[tool.black]
+line-length = 120
+include = '\.pyi?$'
+exclude = '''
+/(
+  \.git
+ | \.hg
+ | \.mypy_cache
+ | \.tox
+ | \.venv
+ | _build
+ | buck-out
+ | build
+ | __pypackages__
+ )/
+'''
