@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["cross_platform", "inherit_metadata"]
 lock_version = "4.4.1"
-content_hash = "sha256:60e5946a6acb9aa964fdef279fe5305755b32fc81dfba1fa78365e9078d9ea35"
+content_hash = "sha256:e862b7cd4ccd55830858e2b8620d810c9aeb7be18866ae090a2b5ee15201ce67"
 
 [[package]]
 name = "aenum"
@@ -620,6 +620,15 @@ groups = ["dev"]
 files = [
     {file = "mypy_extensions-1.0.0-py3-none-any.whl", hash = "sha256:4392f6c0eb8a5668a69e23d168ffa70f0be9ccfd32b5cc2d26a34ae5b844552d"},
     {file = "mypy_extensions-1.0.0.tar.gz", hash = "sha256:75dbf8955dc00442a438fc4d0666508a9a97b6bd41aa2f0ffe9d2f2725af0782"},
+]
+
+[[package]]
+name = "netifaces"
+version = "0.11.0"
+summary = "Portable network interface information."
+groups = ["dev"]
+files = [
+    {file = "netifaces-0.11.0.tar.gz", hash = "sha256:043a79146eb2907edf439899f262b3dfe41717d34124298ed281139a8b93ca32"},
 ]
 
 [[package]]

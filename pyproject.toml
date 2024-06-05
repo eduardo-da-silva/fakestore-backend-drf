@@ -34,10 +34,12 @@ dev = [
     "black>=24.4.2",
     "isort>=5.13.2",
     "pylint>=3.2.2",
+    "netifaces>=0.11.0",
 ]
 
 [tool.pdm.scripts]
-dev = "python manage.py runserver"
+pre_dev = "python ./scripts/set_my_ip.py"
+dev = "python manage.py runserver 0.0.0.0:8000"
 createsuperuser = "python manage.py createsuperuser"
 pre_migrate = "python manage.py makemigrations"
 migrate = "python manage.py migrate"
