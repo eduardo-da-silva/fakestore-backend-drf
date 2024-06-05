@@ -5,7 +5,20 @@ description = "Default template for PDM package"
 authors = [
     {name = "Eduardo da Silva", email = "eduardo.silva@gmail.com"},
 ]
-dependencies = []
+dependencies = [
+    "django>=4.2.13",
+    "djangorestframework>=3.15.1",
+    "django-cors-headers>=4.3.1",
+    "django-cloudinary-storage>=0.3.0",
+    "passage-identity>=2.5.0",
+    "django-extensions>=3.2.3",
+    "django-filter>=24.2",
+    "drf-spectacular>=0.27.2",
+    "setuptools>=70.0.0",
+    "python-magic>=0.4.27",
+    "Pillow>=10.3.0",
+    "dj-database-url>=2.2.0",
+]
 requires-python = ">=3.10"
 readme = "README.md"
 license = {text = "MIT"}
@@ -13,3 +26,10 @@ license = {text = "MIT"}
 
 [tool.pdm]
 distribution = false
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "black>=24.4.2",
+    "isort>=5.13.2",
+    "pylint>=3.2.2",
+]
