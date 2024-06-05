@@ -1,10 +1,14 @@
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+load_dotenv()
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "django-insecure-%qdw^bt_kuk2&5uhb_$r9na07x#sdi#cp#)6vu^vc^o)*3-ew%"
-DEBUG = True
+MODE = os.getenv("MODE", "DEVELOPMENT")
+SECRET_KEY = os.getenv("SECRET_KEY")
+DEBUG = os.getenv("DEBUG", "True") 
 ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
@@ -14,7 +18,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "cloudinary_storage"
+    "cloudinary_storage",
     "cloudinary",
     "corsheaders",
     "django_extensions",
@@ -95,6 +99,9 @@ MEDIA_ENDPOINT = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 FILE_UPLOAD_PERMISSIONS = 0o640
 
+if MODE == "DEVELOPMENT":
+    MY_IP = os.getenv("MY_IP", "127.0.0.1")
+    MEDIA_URL = f"http://{MY_IP}:8000/media/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
@@ -114,3 +121,7 @@ SPECTACULAR_SETTINGS = {
     "DESCRIPTION": "REST API to handle FakeStore project.",
     "VERSION": "1.0.0",
 }
+
+PASSAGE_APP_ID = os.getenv("PASSAGE_APP_ID")
+PASSAGE_API_KEY = os.getenv("PASSAGE_API_KEY")
+PASSAGE_AUTH_STRATEGY = 2
