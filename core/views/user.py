@@ -1,16 +1,21 @@
 from rest_framework import status
+from rest_framework.decorators import action, permission_classes
 from rest_framework.response import Response
-from rest_framework.views import APIView
+from rest_framework.generics import GenericAPIView
+from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import IsAuthenticated
 
-from core.authentication import TokenAuthentication
-from core.serializers.user import AuthSerializer
+from core.models import User
+from core.serializers import UserSerializer
 
-class AuthTokenView(APIView):
-    authentication_classes = [TokenAuthentication]
 
-    @staticmethod
-    def post(request):
+class UserViewSet(ModelViewSet):
+    queryset = User.objects.all().order_by("id")
+    serializer_class = UserSerializer
+
+
+    @action(detail=False, methods=["get"], permission_classes=[IsAuthenticated])
+    def me(self, request):
         user = request.user
-        data = AuthSerializer(data=user).data
-        return Response(data, status=status.HTTP_200_OK)
-    
+        serializer = UserSerializer(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
