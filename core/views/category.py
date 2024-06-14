@@ -9,3 +9,5 @@ class CategoryViewSet(ModelViewSet):
 
     queryset = Category.objects.all()  # pylint: disable=E1101
     serializer_class = CategorySerializer
+    # def get_permissions(self):
+    #     return super().get_permissions()

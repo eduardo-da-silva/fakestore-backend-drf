@@ -163,3 +163,4 @@ cython_debug/
 Dockerfile
 docker-entrypoint.sh
 docker-compose.yml
+media/
