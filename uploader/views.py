@@ -4,7 +4,7 @@ from uploader.models import Document, Image
 from uploader.serializers import DocumentUploadSerializer, ImageUploadSerializer
 
 
-class CreateViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
+class CreateViewSet(mixins.ListModelMixin, mixins.CreateModelMixin, viewsets.GenericViewSet):
     pass
 
 
