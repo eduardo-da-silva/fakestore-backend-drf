@@ -21,6 +21,10 @@ class Order(models.Model):
     def __str__(self):
         return f"Order {self.id} ({self.status})"  # pylint: disable=no-member
 
+    @property
+    def total(self):
+        return sum(item.product.price * item.quantity for item in self.items.all())  # pylint: disable=no-member
+
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.PROTECT, related_name="items")
