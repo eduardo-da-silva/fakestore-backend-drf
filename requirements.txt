@@ -6,7 +6,7 @@ annotated-types==0.7.0
 asgiref==3.8.1
 attrs==23.2.0
 blinker==1.8.2
-certifi==2024.6.2
+certifi==2024.7.4
 cffi==1.16.0; platform_python_implementation != "PyPy"
 charset-normalizer==3.3.2
 click==8.1.7
